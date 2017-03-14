@@ -1,0 +1,25 @@
+<div class="md-inline-form">
+    <div layout="column" layout-gt-xs="row" flex>
+        <md-input-container flex="100" flex-gt-xs="50">
+            <input type="text" name="naw" ng-model="vm.church.name"
+                   placeholder="Nome"
+                   required>
+        </md-input-container>
+    </div>
+    <div layout="column" layout-gt-xs="row" flex>
+        <md-input-container flex="100" flex-gt-xs="50">
+            <input name="lastname" ng-model="vm.church.code"
+                   placeholder="Código" required ng-pattern="/^[0-9]{6}$/" md-maxlength="6">
+        </md-input-container>
+
+        <md-input-container flex="100" flex-gt-xs="50">
+            <label>Tipo do Imóvel</label>
+            <md-select ng-model="vm.church.immobileType">
+                <md-option ng-repeat="immobileType in vm.immobileTypes" value="{{immobileType.id}}">
+                    {{immobileType.name}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+
+    </div>
+</div>

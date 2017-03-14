@@ -1,0 +1,87 @@
+<!--<div id="simple-table" class="page-layout simple fullwidth doc-page element-doc-page">-->
+
+<div id="church" class="page-layout carded fullwidth">
+
+    <div class="top-bg md-accent-bg"></div>
+    <!-- HEADER -->
+
+    <div class="center" layout="column" flex>
+
+      <div class="header" layout="row" layout-align="space-between center">
+          <div layout="column" layout-align="center start">
+              <div class="breadcrumb" layout="row" layout-align="start center">
+                  <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                  <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                  <span class="parent">Igrejas</span>
+              </div>
+              <div class="title">Igrejas</div>
+          </div>
+
+          <div class="search" layout="row" layout-align="start center" flex>
+              <md-icon md-font-icon="icon-magnify" class="white-text icon search-icon"></md-icon>
+              <input class="search-input" type="text" placeholder="Search"
+                     translate translate-attr-placeholder="Buscar" flex>
+          </div>
+      </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+      <div class="content">
+         
+          <div class="white-bg md-whiteframe-4dp">
+              <md-toolbar class="md-table-toolbar md-default toolbar">
+                <div class="md-toolbar-tools" ng-show="!vm.selected.length">
+                    <md-button class="md-icon-button" ui-sref=".new">
+                      <md-icon md-font-icon="icon-plus"></md-icon>
+                    </md-button>
+                </div>
+                <div class="md-toolbar-tools" ng-show="vm.selected.length">
+                  <span>{{vm.selected.length}} {{vm.selected.length > 1 ? 'itens selecionados' : 'item selecionado'}} </span>
+                  <span flex></span>
+                  <md-button class="md-icon-button" ui-sref=".edit({id:vm.selected[0].id})">
+                    <md-icon md-font-icon="icon-pencil-box-outline"></md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" ng-click="vm.remove($event)">
+                    <md-icon md-font-icon="icon-delete"></md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" ui-sref=".document({churchId:vm.selected[0].id})">
+                    <md-icon md-font-icon="icon-file-document"></md-icon>
+                  </md-button>
+                </div>
+              </md-toolbar>
+              <md-table-container>
+                <table md-table md-row-select ng-model="vm.selected" md-progress="promise">
+                  <thead md-head>
+                    <tr md-row>
+                      <th md-column md-numeric md-order-by="code"><span>Código</span></th>
+                      <th md-column md-order-by="name"><span>Nome</span></th>
+                      <th md-column>Tipo de Imóvel</th>
+                      <th md-column>Endereço</th>
+                    </tr>
+                  </thead>
+                  <tbody md-body>
+                    <tr md-row md-select="church" md-select-id="id" md-auto-select ng-repeat="church in vm.churches">
+                      <td md-cell>{{church.code}}</td>
+                      <td md-cell>{{church.name}}</td>
+                      <td md-cell>{{church.immobileType | enumFilter:vm.immobileTypes}}</td>
+                      <td md-cell>{{church.address.street}}, {{church.address.number}} - {{church.address.neighborhood}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </md-table-container>
+
+              <md-table-pagination md-limit="vm.pagination.numberOfElements"
+                                   md-limit-options="[5, 10, 20]" 
+                                   md-page="vm.pagination.page" 
+                                   md-total="{{vm.pagination.totalElements}}" 
+                                   md-on-paginate="vm.onPaginate" 
+                                   md-label="{page: 'Página:', rowsPerPage: 'Registros por página:', of: 'de'}"
+                                   md-boundary-links="true"
+                                   md-page-select> 
+              </md-table-pagination>
+          </div>
+
+      </div>
+    <!-- / CONTENT -->
+    </div>
+</div>

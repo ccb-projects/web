@@ -1,0 +1,27 @@
+<md-dialog class="form-dialog" aria-label="New Message">
+        <md-toolbar class="md-accent md-hue-2">
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <span class="title">Adicionar Igreja</span>
+                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog" translate
+                           translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content ms-scroll>
+            <form name="stepper" ms-stepper ng-submit="vm.save()" ng-model="vm.stepper" novalidate>
+                <ms-stepper-step ng-form="church" step="1" step-title="'Igreja'">
+                    <div ng-include="'app/main/church/forms/church-form.html'"></div>
+                </ms-stepper-step>
+
+                <ms-stepper-step ng-form="address" step="2" step-title="'Endereço'" >
+                    <div ng-include="'app/main/church/forms/address-form.html'"></div>
+                </ms-stepper-step>
+
+                <!--<ms-stepper-step ng-form="ministry" step="3" step-title="'Ministério'">
+                    <div ng-include="'app/main/church/forms/ministry-form.html'"></div>
+                </ms-stepper-step>-->
+            </form>
+        </md-dialog-content>
+</md-dialog>

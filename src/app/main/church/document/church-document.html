@@ -1,0 +1,102 @@
+<div id="e-commerce-product" class="page-layout simple tabbed" layout="column">
+
+    <div class="header md-accent-bg" layout="row" layout-align="start center">
+        <div class="white-fg" layout="row" layout-align="start center" flex>
+            <md-button class="goto-products-button md-icon-button" aria-label="Go to products"
+                       ui-sref="app.church"
+                       translate translate-attr-aria-label="EC.GO_TO_PRODUCTS">
+                <md-icon md-font-icon="icon-arrow-left"></md-icon>
+            </md-button>
+
+            <div layout="row" layout-align="start center">
+                <div class="product-image" hide-xs>
+                    <img ng-src="{{vm.product.images[0].url}}">
+                </div>
+
+                <div layout="column" layout-align="start start">
+                    <div class="h2">
+                        {{vm.church.name}}
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Cadastro de documentos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="form-wrapper md-whiteframe-1dp" flex="100">
+
+            <form name="basicForm" class="md-inline-form" novalidate>
+
+                <div class="form-title">Inserir Documento</div>
+
+
+                <div layout="column" layout-gt-xs="row">
+                    <md-input-container flex>
+                        <label>Tipo de Documento</label>
+                        <md-select id="documentType" ng-model="vm.entity.documentType">
+                            <md-option ng-repeat="documentType in vm.documentTypes" ng-value="documentType">
+                                {{documentType.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <div flex layout="row" layout-align="space-between center">
+                        <input type="text" placeholder="Nome do Documento" ng-model="vm.documentName" ng-readonly="true">
+                        <div id="file-uploader"
+                            flow-init="vm.ngFlowOptions"
+                            flow-name="vm.ngFlow.flow"
+                            flow-file-added="vm.fileAdded($file)">
+                            <md-button class="md-accent md-raised" flow-btn ng-click="vm.addFile($event)">
+                                Upload
+                            </md-button>
+                        </div>
+                    </div>
+                </div>
+
+                <md-button type="submit" 
+                           class="md-raised md-accent" 
+                           aria-label="Submit" 
+                           ng-disabled="basicForm.$invalid || basicForm.$pristine"
+                           ng-click="vm.saveFile()">
+                    Salvar
+                </md-button>
+            </form>
+
+            <table class="simple list-view">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th translate="church.document.type">Tipo Documento</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="document in vm.documents" ng-click="vm.select(folder)" ng-class="{'selected' : vm.selected === folder}">
+                        <td class="file-icon">
+                            <i class="icon-{{folder.type}}"></i>
+                        </td>
+                        <td class="name">{{document[1].name}}</td>
+                        <td class="type" hide show-gt-sm>{{folder.type}}</td>
+                        <td class="owner" hide-xs>{{folder.owner}}</td>
+                        <td class="size" hide-xs>{{folder.size === '' ? '-': folder.size}}</td>
+                        <td class="last-modified" hide show-gt-md>{{folder.modified}}</td>
+                        <td class="show-details" hide-gt-md>
+                            <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleDetails(folder)" aria-label="Toggle details sidenav">
+                                <md-icon md-font-icon="icon-information-outline"></md-icon>
+                            </md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+<!-- / LIST VIEW -->
+
+    </div>
+
+</div>

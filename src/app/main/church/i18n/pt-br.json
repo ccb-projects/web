@@ -1,0 +1,12 @@
+{
+	"church": {
+		"title": "Igreja",
+		"title_nav" : "Igrejas",
+		"document" : {
+			"name" : "Documento",
+			"type" : "Tipo",
+			"size" : "Tamanho",
+			"last_modified" : "Última Modificação"
+		}
+	}
+}

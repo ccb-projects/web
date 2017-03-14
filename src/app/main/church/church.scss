@@ -1,0 +1,76 @@
+#church {
+
+	.center {
+		.header {
+			height: 136px !important;
+	        min-height: 136px !important;
+	        max-height: 136px !important;
+	        padding: 24px;
+	        
+
+			.breadcrumb {
+				padding-top: 20px;
+			}
+
+			.title {
+				font-size: 30px;
+				color: #FFFFFF;
+			}
+	        .search {
+	            position: relative;
+	            padding-left: 24px;
+	            max-width: 480px;
+
+	            .search-icon {
+	                margin: 0 -24px 0 0;
+	            }
+
+	            .search-input {
+	                margin: 0 0 0 32px;
+	                background: none;
+	                font-size: 16px;
+	                line-height: 40px;
+	                height: 40px;
+	                color: #FFFFFF;
+	                border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+	                transition: border-color 300ms ease;
+
+	                &:focus {
+	                    border-color: rgba(255, 255, 255, 1);
+	                }
+
+	                &::-webkit-input-placeholder {
+	                    color: rgba(255, 255, 255, 0.5);
+	                }
+	            }
+	        }
+		}
+
+		.content {
+			padding: 8px;
+
+			.toolbar {
+
+				line-height: 40px;
+
+				.md-icon-button {
+					margin-right: 2px;
+					background-color: #BBDEFB;
+				}
+			}
+		}
+	}
+}
+
+md-toolbar {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+md-toolbar.md-table-toolbar.alternate {
+  color: #1e88e5;
+  background-color: #e3f2fd;
+  
+  .md-toolbar-tools {
+    font-size: 16px;
+  }
+}
